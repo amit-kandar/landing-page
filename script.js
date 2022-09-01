@@ -1,130 +1,33 @@
-function changeCss() {
-    if (this.scrollY > 70) {
-        document.getElementsByClassName("nav-bar")[0].style.padding =
-            "15px 95px 15px 95px";
-        document.getElementsByClassName("nav-bar")[0].style.backgroundColor =
-            "#FFFFFFCC";
-        document.getElementsByClassName("nav-bar")[0].style.backdropFilter =
-            "blur(5px)";
-        document.getElementsByClassName(
-            "logo"
-        )[0].firstElementChild.style.backgroundColor = "#3056d3";
-        document.getElementsByClassName(
-            "logo"
-        )[0].firstElementChild.firstElementChild.style.color = "#fff";
-        document.getElementsByClassName("logo")[0].lastElementChild.style.color =
-            "#090E34";
-
-        // for nav links
-        let n =
-            document.getElementsByClassName("nav-items")[0].firstElementChild
-                .childElementCount;
-        for (let i = 0; i < n; i++) {
-            let target =
-                document.getElementsByClassName("nav-items")[0].firstElementChild
-                    .children[i];
-            target.addEventListener("mouseover", () => {
-                target.style.color = "#3056d3";
-            });
-            target.addEventListener("mouseout", () => {
-                target.style.color = "#090E34";
-            });
-            if (i === 0) {
-                target.style.color = "#3056d3";
-                target.addEventListener("mouseout", () => {
-                    target.style.color = "#3056d3";
-                });
-            } else {
-                target.style.color = "#090E34";
-            }
-        }
-
-        // Sign In
-        let signin = document.getElementsByClassName("sign-in")[0];
-        signin.style.color = "#090E34";
-        signin.addEventListener("mouseover", () => {
-            signin.style.color = "#3056d3";
-        });
-        signin.addEventListener("mouseout", () => {
-            signin.style.color = "#090E34";
-        });
-
-        // Sign Up
-        let signup = document.getElementsByClassName("active")[0];
-        signup.style.color = "#fff";
-        signup.style.backgroundColor = "#3056d3";
-        signup.addEventListener("mouseover", () => {
-            signup.style.color = "#fff";
-            signup.style.backgroundColor = "#090E34";
-        });
-        signup.addEventListener("mouseout", () => {
-            signup.style.backgroundColor = "#fff";
-            signup.style.backgroundColor = "#3056d3";
-        });
+window.onscroll = function () {
+    const navbar = document.querySelector(".nav-bar")
+    const logobg = document.querySelector(".brand-logo")
+    const logo = document.querySelector(".brand-logo").firstElementChild
+    const logo_name = document.querySelector(".logo-name")
+    const signup = document.querySelector(".active")
+    const signin = document.querySelector(".sign-in")
+    
+    if (window.pageYOffset > 30) {
+        navbar.classList.add("sticky")
+        logobg.style.backgroundColor = "#3056d3"
+        logo.style.color = "#fff"
+        logo_name.style.color = "#090e34"
+        document.querySelectorAll(".nav-links").forEach((e)=>{
+            e.classList.add("nav-links-a")
+        })
+        signup.classList.add("sign-up")
+        signin.classList.add("signin")
     } else {
-        document.getElementsByClassName("nav-bar")[0].style.padding =
-            "25px 95px 25px 95px";
-        document.getElementsByClassName("nav-bar")[0].style.backgroundColor =
-            "#3056d3";
-        document.getElementsByClassName(
-            "logo"
-        )[0].firstElementChild.style.backgroundColor = "#fff";
-        document.getElementsByClassName(
-            "logo"
-        )[0].firstElementChild.firstElementChild.style.color = "#3056d3";
-        document.getElementsByClassName("logo")[0].lastElementChild.style.color =
-            "#fff";
-
-        // for nav links
-        let n =
-            document.getElementsByClassName("nav-items")[0].firstElementChild
-                .childElementCount;
-        for (let i = 0; i < n; i++) {
-            let target =
-                document.getElementsByClassName("nav-items")[0].firstElementChild
-                    .children[i];
-            target.addEventListener("mouseover", () => {
-                target.style.color = "#e5e7eb";
-            });
-            target.addEventListener("mouseout", () => {
-                target.style.color = "#fff";
-            });
-            if (i === 0) {
-                target.style.color = "#e5e7eb";
-                target.addEventListener("mouseout", () => {
-                    target.style.color = "#e5e7eb";
-                });
-            } else {
-                target.style.color = "#fff";
-            }
-        }
-
-        // Sign In
-        let signin = document.getElementsByClassName("sign-in")[0];
-        signin.style.color = "#fff";
-        signin.addEventListener("mouseover", () => {
-            signin.style.color = "#e5e7eb";
-        });
-        signin.addEventListener("mouseout", () => {
-            signin.style.color = "#fff";
-        });
-
-        // Sign Up
-        let signup = document.getElementsByClassName("active")[0];
-        signup.style.color = "#fff";
-        signup.style.backgroundColor = "rgba(199, 208, 255, 0.26)";
-        signup.addEventListener("mouseover", () => {
-            signup.style.backgroundColor = "#fff";
-            signup.style.color = "#090E34";
-        });
-        signup.addEventListener("mouseout", () => {
-            signup.style.backgroundColor = "rgba(199, 208, 255, 0.26)";
-            signup.style.color = "#fff";
-        });
+        navbar.classList.remove("sticky")
+        logobg.style.backgroundColor = "#fff"
+        logo.style.color = "#3056d3"
+        logo_name.style.color = "#fff"
+        document.querySelectorAll(".nav-links").forEach((e)=>{
+            e.classList.remove("nav-links-a")
+        })
+        signup.classList.remove("sign-up")
+        signin.classList.remove("signin")
     }
 }
-
-window.addEventListener("scroll", changeCss, false);
 
 for (let index = 1; index <= 4; index++) {
     let card = document.getElementById(`card${index}`);
