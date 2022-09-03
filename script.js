@@ -7,6 +7,7 @@ window.onscroll = function () {
     const signin = document.querySelector(".sign-in")
     const menu = document.querySelectorAll(".menu div")
     const menubar = document.querySelector(".nav-items")
+    const newmenubar = document.querySelector(".left-side ul")
 
     if (window.pageYOffset > 30) {
         navbar.classList.add("sticky")
@@ -18,10 +19,14 @@ window.onscroll = function () {
         })
         signup.classList.add("sign-up")
         signin.classList.add("signin")
-        menu.forEach(div=>{
+        menu.forEach(div => {
             div.style.backgroundColor = "#3056d3"
         })
-        menubar.style.backgroundColor = "#fff"
+        if (window.innerWidth <= 640) {
+            menubar.style.backgroundColor = "#fff"
+        } else if(window.innerWidth >= 641 && window.innerWidth <= 1007){
+            newmenubar.style.backgroundColor = "#fff"
+        }
     } else {
         navbar.classList.remove("sticky")
         logobg.style.backgroundColor = "#fff"
@@ -32,10 +37,14 @@ window.onscroll = function () {
         })
         signup.classList.remove("sign-up")
         signin.classList.remove("signin")
-        menu.forEach(div=>{
+        menu.forEach(div => {
             div.style.backgroundColor = "#fff"
         })
-        menubar.style.backgroundColor = "#3056d3"
+        if (window.innerWidth <= 640) {
+            menubar.style.backgroundColor = "#3056d3"
+        } else if(window.innerWidth >= 641 && window.innerWidth <= 1007){
+            newmenubar.style.backgroundColor = "#3056d3"
+        }
     }
 }
 
@@ -70,31 +79,44 @@ const navslide = () => {
     const menu = document.querySelector(".menu")
     const nav = document.querySelector(".nav-items")
     const leftside = document.querySelectorAll(".left-side ul li")
-    const rightside = document.querySelectorAll( ".right-side a")
+    const rightside = document.querySelectorAll(".right-side a")
     let time = 0
+    const navmid = document.querySelector(".left-side ul")
 
     menu.addEventListener("click", () => {
-        nav.classList.toggle("nav-active")
-        leftside.forEach((link, index)=>{
-            if (link.style.animation) {
-                link.style.animation = ''
-            } else {
-                link.style.animation = `navlinkfade 0.5s ease forwards ${index / 7 + 0.4}s`
-                time = index / 7 + 0.4
-            }
-        })
-        rightside.forEach((link, index)=>{
-            if (link.style.animation) {
-                link.style.animation = ''
-            } else {
-                link.style.animation = `navlinkfade 0.5s ease forwards ${index / 7 + 0. + time}s`
-            }
-        })
-        menu.classList.toggle("toggle")
+        if (window.innerWidth <= 640) {
+            nav.classList.toggle("nav-active")
+            leftside.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = ''
+                } else {
+                    link.style.animation = `navlinkfade 0.5s ease forwards ${index / 7 + 0.4}s`
+                    time = index / 7 + 0.4
+                }
+            })
+            rightside.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = ''
+                } else {
+                    link.style.animation = `navlinkfade 0.5s ease forwards ${index / 7 + 0. + time}s`
+                }
+            })
+            menu.classList.toggle("toggle")
+        } else if(window.innerWidth >= 641 && window.innerWidth <= 1007){
+            navmid.classList.toggle("nav-active")
+            leftside.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = ''
+                } else {
+                    link.style.animation = `navlinkfade 0.5s ease forwards ${index / 7 + 0.4}s`
+                    time = index / 7 + 0.4
+                }
+            })
+        }
     })
 
 
-    
+
 }
 
 navslide()

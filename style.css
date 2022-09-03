@@ -42,7 +42,7 @@ body {
     background-color: #FFFFFFCC !important;
     backdrop-filter: blur(5px);
     transition: 0.3s ease;
-    padding: 1.6rem 7%;
+    /* padding: 1.6rem 7%; */
 }
 
 .logo {
@@ -1024,47 +1024,37 @@ button {
         font-size: 50%;
     }
 
-    .nav-bar{
-        justify-content: space-between;
+    body{
+        overflow-x: hidden;
     }
 
     .menu{
         display: flex;
+        margin-left: 4rem;
     }
 
-    .nav-items{
+    .left-side ul{
         position: absolute;
         right: 0;
         height: 93vh;
-        top: 7vh;
+        top: 100%;
         background-color: var(--var-primary);
         display: flex;
         align-items: center;
         flex-direction: column;
         width: 50%;
-        justify-content: flex-start;
         transform: translateX(100%);
         transition: transform 0.5s ease-in ;
+        justify-content: flex-start;
     }
 
-    .left-side ul,
-    .right-side{
-        flex-direction: column;
-    }
-
-    .nav-links,.right-side a{
-        margin-top: 50%;
+    .left-side ul li{
+        margin: 20%;
         opacity: 0;
     }
 
-    
-    .left-side ul li a,
-    .right-side a{
-        font-size: 16px;
-    }
-    
-    .sign-in{
-        padding-right: 0;
+    .left-side ul li a{
+        font-size: 20px;
     }
 
     .home,
@@ -1205,6 +1195,7 @@ button {
     .sign-in{
         padding-right: 0;
     }
+
 
     .home,
     .features,
