@@ -120,11 +120,14 @@ body {
 .right-side a {
     color: var(--var-white);
     text-decoration: none;
-    padding: 0 2.4rem;
     font-size: 1.6rem;
 }
 
-.right-side a:last-child {
+.sign-in{
+    padding-right: 2rem;
+}
+
+.active {
     padding: 1.6rem 2.4rem;
     background-color: rgba(199, 208, 255, 0.26);
     border-radius: 0.8rem;
@@ -136,7 +139,7 @@ body {
     opacity: 0.7;
 }
 
-.right-side a:last-child:hover {
+.active:hover {
     background-color: var(--var-white);
     color: var(--var-dark-blue);
 }
@@ -159,11 +162,28 @@ body {
 }
 
 
+.menu{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar-1,
+.bar-2,
+.bar-3{
+    width: 25px;
+    height: 3px;
+    background-color: var(--var-white);
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
 
 
 .container {
     width: 100%;
-    /* padding: 0 120px; */
     padding: 0 7%;
 }
 
@@ -989,16 +1009,40 @@ button {
 /*lg screen*/
 @media only screen and (min-device-width: 1008px) {}
 
-@media only screen and (max-device-width: 850px) {
-    .nav-items {
-        display: none;
-    }
-}
+
 
 /*Medium screen*/
 @media only screen and (min-device-width: 641px) and (max-device-width: 1007px) {
     html {
         font-size: 50%;
+    }
+
+    .menu{
+        display: flex;
+        margin-left: 4rem;
+    }
+
+    .nav-items ul{
+        position: absolute;
+        right: 0;
+        height: auto;
+        top: 100%;
+        background-color: var(--var-primary);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in ;
+    }
+
+    .nav-items ul li{
+        margin: 10%;
+        opacity: 0;
+    }
+
+    .nav-items ul li a{
+        font-size: 16px;
     }
 
     .home,
@@ -1058,6 +1102,7 @@ button {
 
     .team-cards-container{
         flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     .contact-container-items {
@@ -1092,10 +1137,43 @@ button {
         font-size: 40%;
     }
 
-    .nav-items,
-    .right-side {
+    body{
+        overflow-x: hidden;
+    }
+
+    .right-side a {
         display: none;
     }
+
+    .menu{
+        display: flex;
+    }
+
+    .nav-items ul{
+        position: absolute;
+        right: 0;
+        height: 93vh;
+        top: 7vh;
+        background-color: var(--var-primary);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in ;
+    }
+
+    .nav-items ul li{
+        margin: 20%;
+        opacity: 0;
+    }
+
+    .nav-items ul li a{
+        font-size: 16px;
+    }
+
+
+
 
     .home,
     .features,
@@ -1189,4 +1267,30 @@ button {
     .location {
         margin-bottom: 32px;
     }
+}
+
+
+.nav-active{
+    transform: translateX(0%) !important;
+}
+
+@keyframes navlinkfade {
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .bar-1{
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .bar-2{
+    opacity: 0;
+}
+.toggle .bar-3{
+    transform: rotate(45deg) translate(-5px, -6px);
 }

@@ -5,27 +5,37 @@ window.onscroll = function () {
     const logo_name = document.querySelector(".logo-name")
     const signup = document.querySelector(".active")
     const signin = document.querySelector(".sign-in")
-    
+    const menu = document.querySelectorAll(".menu div")
+    const menubar = document.querySelector(".nav-items ul")
+
     if (window.pageYOffset > 30) {
         navbar.classList.add("sticky")
         logobg.style.backgroundColor = "#3056d3"
         logo.style.color = "#fff"
         logo_name.style.color = "#090e34"
-        document.querySelectorAll(".nav-links").forEach((e)=>{
+        document.querySelectorAll(".nav-links").forEach((e) => {
             e.classList.add("nav-links-a")
         })
         signup.classList.add("sign-up")
         signin.classList.add("signin")
+        menu.forEach(div=>{
+            div.style.backgroundColor = "#3056d3"
+        })
+        menubar.style.backgroundColor = "#fff"
     } else {
         navbar.classList.remove("sticky")
         logobg.style.backgroundColor = "#fff"
         logo.style.color = "#3056d3"
         logo_name.style.color = "#fff"
-        document.querySelectorAll(".nav-links").forEach((e)=>{
+        document.querySelectorAll(".nav-links").forEach((e) => {
             e.classList.remove("nav-links-a")
         })
         signup.classList.remove("sign-up")
         signin.classList.remove("signin")
+        menu.forEach(div=>{
+            div.style.backgroundColor = "#fff"
+        })
+        menubar.style.backgroundColor = "#3056d3"
     }
 }
 
@@ -55,3 +65,26 @@ for (let index = 1; index <= 6; index++) {
         }
     })
 }
+
+const navslide = () => {
+    const menu = document.querySelector(".menu")
+    const nav = document.querySelector(".nav-items ul")
+    const navlinks = document.querySelectorAll(".nav-items ul li")
+
+    menu.addEventListener("click", () => {
+        nav.classList.toggle("nav-active")
+        navlinks.forEach((link, index)=>{
+            if (link.style.animation) {
+                link.style.animation = ''
+            } else {
+                link.style.animation = `navlinkfade 0.5s ease forwards ${index / 7 + 0.4}s`
+            }
+        })
+        menu.classList.toggle("toggle")
+    })
+
+
+    
+}
+
+navslide()
