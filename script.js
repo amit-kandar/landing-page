@@ -6,7 +6,7 @@ window.onscroll = function () {
     const signup = document.querySelector(".active")
     const signin = document.querySelector(".sign-in")
     const menu = document.querySelectorAll(".menu div")
-    const menubar = document.querySelector(".nav-items ul")
+    const menubar = document.querySelector(".nav-items")
 
     if (window.pageYOffset > 30) {
         navbar.classList.add("sticky")
@@ -68,16 +68,26 @@ for (let index = 1; index <= 6; index++) {
 
 const navslide = () => {
     const menu = document.querySelector(".menu")
-    const nav = document.querySelector(".nav-items ul")
-    const navlinks = document.querySelectorAll(".nav-items ul li")
+    const nav = document.querySelector(".nav-items")
+    const leftside = document.querySelectorAll(".left-side ul li")
+    const rightside = document.querySelectorAll( ".right-side a")
+    let time = 0
 
     menu.addEventListener("click", () => {
         nav.classList.toggle("nav-active")
-        navlinks.forEach((link, index)=>{
+        leftside.forEach((link, index)=>{
             if (link.style.animation) {
                 link.style.animation = ''
             } else {
                 link.style.animation = `navlinkfade 0.5s ease forwards ${index / 7 + 0.4}s`
+                time = index / 7 + 0.4
+            }
+        })
+        rightside.forEach((link, index)=>{
+            if (link.style.animation) {
+                link.style.animation = ''
+            } else {
+                link.style.animation = `navlinkfade 0.5s ease forwards ${index / 7 + 0. + time}s`
             }
         })
         menu.classList.toggle("toggle")

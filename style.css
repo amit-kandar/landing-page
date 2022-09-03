@@ -31,7 +31,7 @@ body {
     top: 0;
     position: sticky;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background-color: var(--var-primary);
     padding: 2.8rem 7%;
@@ -43,12 +43,6 @@ body {
     backdrop-filter: blur(5px);
     transition: 0.3s ease;
     padding: 1.6rem 7%;
-}
-
-.left-side {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .logo {
@@ -87,12 +81,25 @@ body {
     font-weight: 600;
 }
 
-.nav-items ul li {
+.nav-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.left-side ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.left-side ul li {
     list-style: none;
     display: inline-block;
 }
 
-.nav-items ul li a {
+.left-side ul li a {
     text-decoration: none;
     font-size: 1.6rem;
     color: var(--var-white);
@@ -1017,32 +1024,47 @@ button {
         font-size: 50%;
     }
 
-    .menu{
-        display: flex;
-        margin-left: 4rem;
+    .nav-bar{
+        justify-content: space-between;
     }
 
-    .nav-items ul{
+    .menu{
+        display: flex;
+    }
+
+    .nav-items{
         position: absolute;
         right: 0;
-        height: auto;
-        top: 100%;
+        height: 93vh;
+        top: 7vh;
         background-color: var(--var-primary);
         display: flex;
         align-items: center;
         flex-direction: column;
         width: 50%;
+        justify-content: flex-start;
         transform: translateX(100%);
         transition: transform 0.5s ease-in ;
     }
 
-    .nav-items ul li{
-        margin: 10%;
+    .left-side ul,
+    .right-side{
+        flex-direction: column;
+    }
+
+    .nav-links,.right-side a{
+        margin-top: 50%;
         opacity: 0;
     }
 
-    .nav-items ul li a{
+    
+    .left-side ul li a,
+    .right-side a{
         font-size: 16px;
+    }
+    
+    .sign-in{
+        padding-right: 0;
     }
 
     .home,
@@ -1141,15 +1163,15 @@ button {
         overflow-x: hidden;
     }
 
-    .right-side a {
-        display: none;
+    .nav-bar{
+        justify-content: space-between;
     }
 
     .menu{
         display: flex;
     }
 
-    .nav-items ul{
+    .nav-items{
         position: absolute;
         right: 0;
         height: 93vh;
@@ -1159,21 +1181,30 @@ button {
         align-items: center;
         flex-direction: column;
         width: 50%;
+        justify-content: flex-start;
         transform: translateX(100%);
         transition: transform 0.5s ease-in ;
     }
 
-    .nav-items ul li{
-        margin: 20%;
+    .left-side ul,
+    .right-side{
+        flex-direction: column;
+    }
+
+    .nav-links,.right-side a{
+        margin-top: 30%;
         opacity: 0;
     }
 
-    .nav-items ul li a{
+    
+    .left-side ul li a,
+    .right-side a{
         font-size: 16px;
     }
-
-
-
+    
+    .sign-in{
+        padding-right: 0;
+    }
 
     .home,
     .features,
