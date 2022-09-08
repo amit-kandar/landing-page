@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <nav class="nav-bar">
+    <nav class="nav-bar" id="nav">
         <div class="logo">
-            <a href="#">
+            <a href="#home">
                 <span class="brand-logo">
                     <h2>C</h2>
                 </span>
@@ -26,7 +26,7 @@
         <div class="nav-items">
             <div class="left-side">
                 <ul>
-                    <li class="nav-links"><a href="#">Home</a></li>
+                    <li class="nav-links"><a href="#home">Home</a></li>
                     <li class="nav-links"><a href="#about">About</a></li>
                     <li class="nav-links"><a href="#team">Team</a></li>
                     <li class="nav-links"><a href="#contact">Contact</a></li>
@@ -42,7 +42,6 @@
             <div class="bar-2"></div>
             <div class="bar-3"></div>
         </div>
-
     </nav>
 
     <section id="home" class="home container">
@@ -689,8 +688,56 @@
         </div>
     </section>
 
+    <a href="#home" class="backtotop">
+        <span class="line1"></span>
+        <span class="line2"></span>
+    </a>
+
+
 
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+        // Select all links with hashes
+        $('a[href*="#"]')
+            // Remove links that don't actually link to anything
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function(event) {
+                // On-page links
+                if (
+                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                    location.hostname == this.hostname
+                ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    console.log(target);
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function() {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            console.log($target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
+                }
+            });
+    </script>
 </body>
 
 </html>

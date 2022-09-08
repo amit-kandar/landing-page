@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: var(--var-primary);
+    background-color: transparent;
     padding: 2.8rem 7%;
     z-index: 100;
 }
@@ -197,6 +197,8 @@ body {
 /* **********************************Home********************************** */
 
 .home {
+    top: 0;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -216,7 +218,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 60px;
+    margin-top: 16rem;
     width: 60%;
 }
 
@@ -1167,6 +1169,42 @@ button {
 
 .lower-footer-details a:hover{
     color: var(--var-primary);
+}
+
+
+.backtotop{
+    position: fixed;
+    right: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--var-primary);
+    width: 4rem;
+    height: 4rem;
+    bottom: 2rem;
+    z-index: 100;
+    text-decoration: none;
+    border-radius: 0.7rem;
+    transition: top 5s ease-in-out;
+}
+
+.backtotop:hover{
+    background-color: #2c3574;
+}
+
+.line1,
+.line2{
+    height: 0.2rem;
+    width: 1.7rem;
+    background-color: var(--var-white);
+    margin-top: 0.5rem;
+
+}
+
+.line1{
+    transform: rotate(-45deg) translateX(4px);
+}
+.line2{
+    transform: rotate(45deg) translateX(-4px);
 }
 
 

@@ -9,6 +9,12 @@ window.onscroll = function () {
     const menubar = document.querySelector(".nav-items")
     const newmenubar = document.querySelector(".left-side ul")
 
+    if (window.pageYOffset < 400) {
+        document.querySelector(".backtotop").style.display = "None"
+    } else {
+        document.querySelector(".backtotop").style.display = "flex"
+    }
+
     if (window.pageYOffset > 30) {
         navbar.classList.add("sticky")
         logobg.style.backgroundColor = "#3056d3"
