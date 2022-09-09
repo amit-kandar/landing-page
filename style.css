@@ -194,6 +194,10 @@ body {
     padding: 0 7%;
 }
 
+.absolute{
+    position: absolute;
+}
+
 /* **********************************Home********************************** */
 
 .home {
@@ -257,7 +261,7 @@ body {
 
 .features {
     width: 100%;
-    margin: 8rem 0 7rem;
+    margin: 80rem 0 7rem;
 }
 
 .features-heading {
@@ -1292,6 +1296,10 @@ button {
         width: 80%;
     }
 
+    .features {
+        margin: 60rem 0 7rem;
+    }
+
     .features-items-container {
         flex-wrap: wrap;
     }
@@ -1337,7 +1345,7 @@ button {
     }
 
     .contact-container-bg{
-        height: 60%;
+        height: 40%;
     }
 
     .contact-left-side-items {
@@ -1450,6 +1458,10 @@ button {
 
     .hero-img {
         width: 100%;
+    }
+
+    .features {
+        margin: 65rem 0 7rem;
     }
 
     .features-items-container {
